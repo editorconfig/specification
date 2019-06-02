@@ -1,7 +1,12 @@
 # EditorConfig Specification
 
-This repository holds the specification of EditorConfig. To build, first
-install [Sphinx][], and then, in the same directory as this file, run
+This repository hosts the specification of EditorConfig. A built version is
+available at https://editorconfig-specification.readthedocs.io/en/latest/ .
+
+## Build
+
+To build, first install [Sphinx][], and then, in the same directory as this
+file, run
 
     make html
     
