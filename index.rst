@@ -26,6 +26,11 @@
 EditorConfig Specification
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+.. contents:: Table of Contents
+
+Introduction
+============
+
 EditorConfig helps maintain consistent coding styles for multiple developers
 working on the same project across various editors and IDEs. The EditorConfig
 project consists of a file format for defining coding styles and a collection
@@ -33,45 +38,38 @@ of text editor plugins that enable editors to read the file format and adhere
 to defined styles. EditorConfig files are easily readable and they work nicely
 with version control systems.
 
-.. contents:: Table of Contents
-
-EditorConfig File Format
-========================
+File Format
+===========
 
 EditorConfig files use an INI format that is compatible with the format used
-by Python ConfigParser Library, but ``[`` and ``]`` are allowed in the section
-names. The section names are filepath globs, similar to the format accepted by
-gitignore. Forward slashes (``/``) are used as path separators and semicolons
-(``;``) or octothorpes (``#``) are used for comments. Comments should go
-individual lines. EditorConfig files should be UTF-8 encoded, with either CRLF
-or LF line separators.
+by `Python configparser Library`_. In an EditorConfig file (usually named
+``.editorconfig``), all beginning whitespace in each line is ignored. Each
+line must be one of the following:
 
-Filename globs containing path separators (``/``) match filepaths in the same
-way as the filename globs used by ``.gitignore`` files. Backslashes (``\\``) are
-not allowed as path separators.
+- Empty Line: An empty string.
+- Comment: A line starting with a ``;`` or a ``#``.
+- Section Title: A line that starts with a ``[``, and that ends with a ``]``.
+- Assignment: A line separated by an `=` into two parts.
 
-A semicolon character (``;``) starts a line comment that terminates at the end
-of the line. Line comments and blank lines are ignored when parsing. Comments
-may be added to the ends of non-empty lines. An octothorpe character (``#``) may
-be used instead of a semicolon to denote the start of a comment.
+Any line that is not one of the above is invalid. For convenience, we also
+define the following terminologies:
 
-Filename and Location
-=====================
+- Section Name: The string between the beginning ``[`` and the ending ``]`` in
+  a Section Title.
+- Section: The lines starting from a Section Title until the beginning of the
+  next Section Title or end of file.
+- Property: The part before the first `=` in an Assignment.
+- Value: The part after the first `=` in an Assignment.
 
-When a filename is given to EditorConfig a search is performed in the
-directory of the given file and all parent directories for an EditorConfig
-file (named ".editorconfig" by default).  All found EditorConfig files are
-searched for sections with section names matching the given filename. The
-search will stop if an EditorConfig file is found with the root property set
-to true or when reaching the root filesystem directory.
+In EditorConfig files, the Section Names are filepath globs, similar to the
+format accepted by gitignore. ``[`` and ``]`` are allowed in the Section
+Names. Forward slashes (``/``) are used as path separators and Backslashes
+(``\\``) are not allowed as path separators (even on Windows). Comments should
+always go individual lines. EditorConfig files should be UTF-8 encoded, with
+either CRLF or LF line separators.
 
-Files are read top to bottom and the most recent rules found take
-precedence. If multiple EditorConfig files have matching sections, the rules
-from the closer EditorConfig file are read last, so properties in closer
-files take precedence.
-
-Wildcard Patterns
-=================
+Glob Expressions
+================
 
 Section names in EditorConfig files are filename globs that support pattern
 matching through Unix shell-style wildcards. These filename globs recognize
@@ -103,6 +101,21 @@ not interpreted as a special character.
 
 The maximum length of a section name is 4096 characters. All sections
 exceeding this limit are ignored.
+
+File Processing
+===============
+
+When a filename is given to EditorConfig a search is performed in the
+directory of the given file and all parent directories for an EditorConfig
+file (named ".editorconfig" by default).  All found EditorConfig files are
+searched for sections with section names matching the given filename. The
+search will stop if an EditorConfig file is found with the root property set
+to true or when reaching the root filesystem directory.
+
+Files are read top to bottom and the most recent rules found take
+precedence. If multiple EditorConfig files have matching sections, the rules
+from the closer EditorConfig file are read last, so properties in closer
+files take precedence.
 
 Supported Properties
 ====================
@@ -156,3 +169,11 @@ Property names are case insensitive and all property names are lowercased when
 parsing. The maximum length of a property name is 50 characters and the
 maximum length of a property value is 255 characters. Any property beyond
 these limits would be ignored.
+
+Suggestions for Plugin Developers
+=================================
+
+TODO
+
+
+.. _Python configparser Library: https://docs.python.org/3/library/configparser.html
