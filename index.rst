@@ -51,8 +51,9 @@ line must be one of the following:
 - Section Title: A line that starts with a ``[``, and that ends with a ``]``.
 - Assignment: A line separated by an `=` into two parts.
 
-Any line that is not one of the above is invalid. For convenience, we also
-define the following terminologies:
+Any line that is not one of the above is invalid. "Inline comment" in
+appearance, i.e., a line that has a ``;`` or a ``#`` in the middle, is
+undefined. For convenience, we also define the following terminologies:
 
 - Section Name: The string between the beginning ``[`` and the ending ``]`` in
   a Section Title.
