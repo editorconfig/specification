@@ -66,7 +66,7 @@ In EditorConfig files, the Section Names are filepath globs, similar to the
 format accepted by gitignore. ``[`` and ``]`` are allowed in the Section
 Names. Forward slashes (``/``) are used as path separators and Backslashes
 (``\\``) are not allowed as path separators (even on Windows). Comments should
-always go individual lines. EditorConfig files should be UTF-8 encoded, with
+always go on individual lines. EditorConfig files should be UTF-8 encoded, with
 either CRLF or LF line separators.
 
 Glob Expressions
