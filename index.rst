@@ -108,7 +108,8 @@ File Processing
 
 When a filename is given to EditorConfig a search is performed in the
 directory of the given file and all parent directories for an EditorConfig
-file (named ".editorconfig" by default).  All found EditorConfig files are
+file (named ".editorconfig" by default). Non-existing directories are treated
+as if they exist and are empty. All found EditorConfig files are
 searched for sections with section names matching the given filename. The
 search will stop if an EditorConfig file is found with the root property set
 to true or when reaching the root filesystem directory.
