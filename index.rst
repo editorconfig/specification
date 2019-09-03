@@ -175,7 +175,8 @@ these limits would be ignored.
 Suggestions for Plugin Developers
 =================================
 
-TODO
+TODO. For now please read the `Plugin Guidelines`_ on GitHub wiki. 
 
 
 .. _Python configparser Library: https://docs.python.org/3/library/configparser.html
+.. _Plugin Guidelines: https://github.com/editorconfig/editorconfig/wiki/Plugin-Guidelines
