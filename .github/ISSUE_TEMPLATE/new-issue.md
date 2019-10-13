@@ -1,6 +1,6 @@
 ---
 name: New Issue
-about: Open a new issue (bug report or pull request)
+about: Open a new issue (bug report or feature request)
 title: "[Title]"
 labels: ''
 assignees: ''
