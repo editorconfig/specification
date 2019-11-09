@@ -41,40 +41,38 @@ with version control systems.
 File Format
 ===========
 
-EditorConfig files use an INI format that is compatible with the format used
-by `Python configparser Library`_. In an EditorConfig file (usually named
-``.editorconfig``), all beginning whitespace in each line is ignored. Each
-line must be one of the following:
+EditorConfig uses an INI file format. In an EditorConfig file (usually named
+``.editorconfig``), all beginning whitespace on each line is considered
+irrelevant. Each line must be one of the following:
 
-- Empty Line: An empty string.
-- Comment: A line starting with a ``;`` or a ``#``.
-- Section Title: A line that starts with a ``[``, and that ends with a ``]``.
-- Assignment: A line separated by an `=` into two parts.
+- Blank: contains only whitespace characters.
+- Comment: starts with a ``;`` or a ``#``.
+   - Inline comments are not supported.
+- Section Header: starts with a ``[`` and ends with a ``]``.
+   - May not use any non-whitespace characters outside of the surrounding
+     brackets.
+   - May contain any characters between the square brackets (e.g.,
+     ``[`` and ``]`` are allowed).
+   - Forward slashes (``/``) are used as path separators.
+   - Backslashes (``\\``) are not allowed as path separators (even on Windows).
+   - Section Name: the string between the beginning ``[`` and the ending ``]``.
+   - Section: the lines starting from a Section Header until the beginning of the
+     next Section Header or the end of the file.
+- Property: contains a key-value pair, separated by an `=`.
+   - Key: the part before the first `=` (trimmed of whitespace).
+   - Value: The part after the first `=` (trimmed of whitespace).
 
-Any line that is not one of the above is invalid. "Inline comment" in
-appearance, i.e., a line that has a ``;`` or a ``#`` in the middle, is
-undefined. For convenience, we also define the following terminologies:
+Any line that is not one of the above is invalid.
 
-- Section Name: The string between the beginning ``[`` and the ending ``]`` in
-  a Section Title.
-- Section: The lines starting from a Section Title until the beginning of the
-  next Section Title or end of file.
-- Property: The part before the first `=` in an Assignment.
-- Value: The part after the first `=` in an Assignment.
-
-In EditorConfig files, the Section Names are filepath globs, similar to the
-format accepted by gitignore. ``[`` and ``]`` are allowed in the Section
-Names. Forward slashes (``/``) are used as path separators and Backslashes
-(``\\``) are not allowed as path separators (even on Windows). Comments should
-always go on individual lines. EditorConfig files should be UTF-8 encoded, with
-either CRLF or LF line separators.
+EditorConfig files should be UTF-8 encoded, with LF or CRLF line separators.
 
 Glob Expressions
 ================
 
-Section names in EditorConfig files are filename globs that support pattern
-matching through Unix shell-style wildcards. These filename globs recognize
-the following as special characters for wildcard matching:
+Section names in EditorConfig files are filepath globs, similar to the format
+accepted by ``.gitignore``. They support pattern matching through Unix
+shell-style wildcards. These filepath globs recognize the following as
+special characters for wildcard matching:
 
 .. list-table::
    :header-rows: 1
@@ -121,8 +119,9 @@ files take precedence.
 Supported Properties
 ====================
 
-EditorConfig file sections contain properties, which are name-value pairs
-separated by an equal sign (``=``). EditorConfig plugins will ignore
+EditorConfig file sections contain properties, which are key-value pairs
+separated by an equal sign (``=``). Any property other than ``root`` MUST be
+located under a section to take effect. EditorConfig plugins will ignore
 unrecognized property names and properties with invalid values.
 
 Here is the list of all property names understood by EditorConfig and all
@@ -152,19 +151,19 @@ valid values for these properties:
      - Set to ``latin1``, ``utf-8``, ``utf-8-bom``, ``utf-16be`` or ``utf-16le`` to
        control the character set. Use of ``utf-8-bom`` is discouraged.
    * - ``trim_trailing_whitespace``
-     - Set to ``true`` to remove any whitespace characters preceeding newline
-       characters and ``false`` to ensure it doesn't.
+     - Set to ``true`` to remove all whitespace characters preceeding newline
+       characters in the file and ``false`` to ensure it doesn't.
    * - ``insert_final_newline``
      - Set to ``true`` ensure file ends with a newline when saving and ``false``
        to ensure it doesn't.
    * - ``root``
-     - Must be specified at the top of the file outside of any sections. Set
-       to ``true`` to stop ``.editorconfig`` files search on current file. The
-       value is case insensitive.
+     - Must be specified in the default (global/root) section of the file. Set
+       to ``true`` to stop the ``.editorconfig`` file search on the current file.
+       The value is case insensitive.
 
-For any property, a value of ``unset`` is to remove the effect of that
+For any property, a value of ``unset`` removes the effect of that
 property, even if it has been set before. For example, add ``indent_size =
-unset`` to undefine indent_size property (and use editor default).
+unset`` to undefine the ``indent_size`` property (and use editor defaults).
 
 Property names are case insensitive and all property names are lowercased when
 parsing. The maximum length of a property name is 50 characters and the
