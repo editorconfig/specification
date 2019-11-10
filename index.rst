@@ -5,10 +5,10 @@
     modification, are permitted provided that the following conditions are met:
 
     1. Redistributions of source code must retain the above copyright notice,
-        this list of conditions and the following disclaimer.
-    2. Redistributions in binary form must reproduce the above copyright notice,
-        this list of conditions and the following disclaimer in the documentation
-        and/or other materials provided with the distribution.
+       this list of conditions and the following disclaimer.
+    2. Redistributions in binary form must reproduce the above copyright
+       notice, this list of conditions and the following disclaimer in the
+       documentation and/or other materials provided with the distribution.
 
     THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
     AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
@@ -41,13 +41,16 @@ with version control systems.
 File Format
 ===========
 
-EditorConfig uses an INI file format. In an EditorConfig file (usually named
-``.editorconfig``), all beginning whitespace on each line is considered
-irrelevant. Each line must be one of the following:
+EditorConfig uses a strict EditorConfig-INI file format. In an EditorConfig
+file (usually named ``.editorconfig``), all beginning whitespace on each line
+is considered irrelevant. Each line must be one of the following:
 
 - Blank: contains only whitespace characters.
 - Comment: starts with a ``;`` or a ``#``.
-   - Inline comments are not supported.
+   - Inserting a ``#`` or ``;`` after non-whitespace characters in a line
+     (i.e., inline) will not be parsed as a comment; in fact, it will be
+     considered part of the section name, declaration key or value in which
+     it was inserted.
 - Section Header: starts with a ``[`` and ends with a ``]``.
    - May not use any non-whitespace characters outside of the surrounding
      brackets.
@@ -55,16 +58,21 @@ irrelevant. Each line must be one of the following:
      ``[`` and ``]`` are allowed).
    - Forward slashes (``/``) are used as path separators.
    - Backslashes (``\\``) are not allowed as path separators (even on Windows).
-   - Section Name: the string between the beginning ``[`` and the ending ``]``.
-   - Section: the lines starting from a Section Header until the beginning of the
-     next Section Header or the end of the file.
-- Property: contains a key-value pair, separated by an `=`.
+- Declaration: contains a key-value pair, separated by an `=`.
    - Key: the part before the first `=` (trimmed of whitespace).
    - Value: The part after the first `=` (trimmed of whitespace).
 
 Any line that is not one of the above is invalid.
 
 EditorConfig files should be UTF-8 encoded, with LF or CRLF line separators.
+
+Additionaly, EditorConfig defines the following terms:
+
+- Preamble: the part of the document that precedes the first section. The
+  preamble is optional and may contain declarations, comments or blank lines.
+- Section Name: the string between the beginning ``[`` and the ending ``]``.
+- Section: the lines starting from a Section Header until the beginning of
+  the next Section Header or the end of the file.
 
 Glob Expressions
 ================
@@ -108,8 +116,8 @@ When a filename is given to EditorConfig a search is performed in the
 directory of the given file and all parent directories for an EditorConfig
 file (named ".editorconfig" by default).  All found EditorConfig files are
 searched for sections with section names matching the given filename. The
-search will stop if an EditorConfig file is found with the root property set
-to true or when reaching the root filesystem directory.
+search will stop if an EditorConfig file is found with the ``root`` Declaration
+set to ``true`` in the preamble or when reaching the root filesystem directory.
 
 Files are read top to bottom and the most recent rules found take
 precedence. If multiple EditorConfig files have matching sections, the rules
@@ -157,9 +165,9 @@ valid values for these properties:
      - Set to ``true`` ensure file ends with a newline when saving and ``false``
        to ensure it doesn't.
    * - ``root``
-     - Must be specified in the default (global/root) section of the file. Set
-       to ``true`` to stop the ``.editorconfig`` file search on the current file.
-       The value is case insensitive.
+     - Must be specified in the preamble. Set to ``true`` to stop the
+       ``.editorconfig`` file search on the current file. The value is case
+       insensitive.
 
 For any property, a value of ``unset`` removes the effect of that
 property, even if it has been set before. For example, add ``indent_size =
