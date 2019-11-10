@@ -69,7 +69,7 @@ EditorConfig files should be UTF-8 encoded, with LF or CRLF line separators.
 Additionaly, EditorConfig defines the following terms:
 
 - Preamble: the part of the document that precedes the first section. The
-  preamble is optional and may contain declarations, comments or blank lines.
+  preamble is optional and may contain declarations, comments and blank lines.
 - Section Name: the string between the beginning ``[`` and the ending ``]``.
 - Section: the lines starting from a Section Header until the beginning of
   the next Section Header or the end of the file.
