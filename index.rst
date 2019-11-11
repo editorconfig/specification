@@ -48,9 +48,9 @@ is considered irrelevant. Each line must be one of the following:
 - Blank: contains only whitespace characters.
 - Comment: starts with a ``;`` or a ``#``.
    - Inserting a ``#`` or ``;`` after non-whitespace characters in a line
-     (i.e., inline) will not be parsed as a comment; in fact, it will be
-     considered part of the section name, declaration key or value in which
-     it was inserted.
+     (i.e., inline) shall neither be parsed as a comment nor as part of the
+     section name, key or value in which it was inserted. This may change in
+     the future.
 - Section Header: starts with a ``[`` and ends with a ``]``.
    - May not use any non-whitespace characters outside of the surrounding
      brackets.
@@ -116,8 +116,9 @@ When a filename is given to EditorConfig a search is performed in the
 directory of the given file and all parent directories for an EditorConfig
 file (named ".editorconfig" by default).  All found EditorConfig files are
 searched for sections with section names matching the given filename. The
-search will stop if an EditorConfig file is found with the ``root`` Declaration
-set to ``true`` in the preamble or when reaching the root filesystem directory.
+search shall stop if an EditorConfig file is found with the ``root``
+declaration set to ``true`` in the preamble or when reaching the root
+filesystem directory.
 
 Files are read top to bottom and the most recent rules found take
 precedence. If multiple EditorConfig files have matching sections, the rules
@@ -129,7 +130,7 @@ Supported Properties
 
 EditorConfig file sections contain properties, which are key-value pairs
 separated by an equal sign (``=``). Any property other than ``root`` MUST be
-located under a section to take effect. EditorConfig plugins will ignore
+located under a section to take effect. EditorConfig plugins shall ignore
 unrecognized property names and properties with invalid values.
 
 Here is the list of all property names understood by EditorConfig and all
@@ -144,10 +145,9 @@ valid values for these properties:
    * - ``indent_size``
      - Set to a whole number defining the number of columns used for each
        indentation level and the width of soft tabs (when supported). If this
-       equals to ``tab``, the ``indent_size`` will be set to the tab size, which
-       should be ``tab_width`` if ``tab_width`` is specified, or the tab size set
-       by editor if ``tab_width`` is not specified. The values are case
-       insensitive.
+       equals ``tab``, the ``indent_size`` shall be set to the tab size, which
+       should be ``tab_width`` (if specified); else, the tab size set by the
+       editor. The values are case insensitive.
    * - ``tab_width``
      - Set to a whole number defining the number of columns used to represent
        a tab character. This defaults to the value of ``indent_size`` and should
@@ -176,7 +176,7 @@ unset`` to undefine the ``indent_size`` property (and use editor defaults).
 Property names are case insensitive and all property names are lowercased when
 parsing. The maximum length of a property name is 50 characters and the
 maximum length of a property value is 255 characters. Any property beyond
-these limits would be ignored.
+these limits shall be ignored.
 
 Suggestions for Plugin Developers
 =================================
