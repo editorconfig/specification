@@ -50,7 +50,7 @@ is considered irrelevant. Each line must be one of the following:
    - Inserting a ``#`` or ``;`` after non-whitespace characters in a line
      (i.e., inline) shall neither be parsed as a comment nor as part of the
      section name, key or value in which it was inserted. This may change in
-     the future.
+     the future; thus, it is not recommended.
 - Section Header: starts with a ``[`` and ends with a ``]``.
    - May not use any non-whitespace characters outside of the surrounding
      brackets.
@@ -68,8 +68,8 @@ EditorConfig files should be UTF-8 encoded, with LF or CRLF line separators.
 
 Additionaly, EditorConfig defines the following terms:
 
-- Preamble: the part of the document that precedes the first section. The
-  preamble is optional and may contain declarations, comments and blank lines.
+- Preamble: the lines that precedes the first section. The preamble is optional
+  and may contain declarations, comments and blank lines.
 - Section Name: the string between the beginning ``[`` and the ending ``]``.
 - Section: the lines starting from a Section Header until the beginning of
   the next Section Header or the end of the file.
@@ -122,19 +122,19 @@ filesystem directory.
 
 Files are read top to bottom and the most recent rules found take
 precedence. If multiple EditorConfig files have matching sections, the rules
-from the closer EditorConfig file are read last, so properties in closer
+from the closer EditorConfig file are read last, so declarations in closer
 files take precedence.
 
-Supported Properties
-====================
+Supported Declarations
+======================
 
-EditorConfig file sections contain properties, which are key-value pairs
-separated by an equal sign (``=``). Any property other than ``root`` MUST be
+EditorConfig file sections contain declarations, which are key-value pairs
+separated by an equal sign (``=``). Any declaration other than ``root`` MUST be
 located under a section to take effect. EditorConfig plugins shall ignore
-unrecognized property names and properties with invalid values.
+unrecognized declaration keys and declarations with invalid values.
 
-Here is the list of all property names understood by EditorConfig and all
-valid values for these properties:
+Here is the list of all declaration keys understood by EditorConfig and all
+valid values for these keys:
 
 .. list-table::
    :header-rows: 0
@@ -169,14 +169,14 @@ valid values for these properties:
        ``.editorconfig`` file search on the current file. The value is case
        insensitive.
 
-For any property, a value of ``unset`` removes the effect of that
-property, even if it has been set before. For example, add ``indent_size =
-unset`` to undefine the ``indent_size`` property (and use editor defaults).
+For any declaration, a value of ``unset`` removes the effect of that
+declaration, even if it has been set before. For example, add ``indent_size =
+unset`` to undefine the ``indent_size`` declaration (and use editor defaults).
 
-Property names are case insensitive and all property names are lowercased when
-parsing. The maximum length of a property name is 50 characters and the
-maximum length of a property value is 255 characters. Any property beyond
-these limits shall be ignored.
+Declaration keys are case insensitive. All keys are lowercased after parsing.
+The maximum length of a declaration key is 50 characters and the maximum length
+of a declaration value is 255 characters. Any key or value beyond these limits
+shall be ignored.
 
 Suggestions for Plugin Developers
 =================================
