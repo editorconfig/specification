@@ -41,9 +41,10 @@ with version control systems.
 File Format
 ===========
 
-EditorConfig uses a strict EditorConfig-INI file format. In an EditorConfig
-file (usually named ``.editorconfig``), all beginning whitespace on each line
-is considered irrelevant. Each line must be one of the following:
+EditorConfig uses an [INI file format](https://en.wikipedia.org/wiki/INI_file).
+In an EditorConfig file (usually named ``.editorconfig``), all beginning
+whitespace on each line is considered irrelevant. Each line must be one of the
+following:
 
 - Blank: contains only whitespace characters.
 - Comment: starts with a ``;`` or a ``#``.
@@ -128,7 +129,7 @@ files take precedence.
 Supported Declarations
 ======================
 
-EditorConfig file sections contain declarations, which are key-value pairs
+EditorConfig file sections contain declarations (i.e., key-value pairs)
 separated by an equal sign (``=``). Any declaration other than ``root`` MUST be
 located under a section to take effect. EditorConfig plugins shall ignore
 unrecognized declaration keys and declarations with invalid values.
