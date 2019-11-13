@@ -41,10 +41,11 @@ with version control systems.
 File Format
 ===========
 
-EditorConfig uses an [INI file format](https://en.wikipedia.org/wiki/INI_file).
-In an EditorConfig file (usually named ``.editorconfig``), all beginning
-whitespace on each line is considered irrelevant. Each line must be one of the
-following:
+EditorConfig uses an `INI file format`_. In an EditorConfig file (usually named
+``.editorconfig``), all beginning whitespace on each line is considered
+irrelevant. Each line must be one of the following:
+
+.. _INI file format: https://en.wikipedia.org/wiki/INI_file
 
 - Blank: contains only whitespace characters.
 - Comment: starts with a ``;`` or a ``#``.
@@ -185,6 +186,4 @@ Suggestions for Plugin Developers
 
 TODO. For now please read the `Plugin Guidelines`_ on GitHub wiki. 
 
-
-.. _Python configparser Library: https://docs.python.org/3/library/configparser.html
 .. _Plugin Guidelines: https://github.com/editorconfig/editorconfig/wiki/Plugin-Guidelines
