@@ -41,7 +41,7 @@ with version control systems.
 File Format
 ===========
 
-EditorConfig uses an [INI file format](https://en.wikipedia.org/wiki/INI_file).
+EditorConfig uses an INI file format.
 In an EditorConfig file (usually named ``.editorconfig``), all beginning
 whitespace on each line is considered irrelevant. Each line must be one of the
 following:
