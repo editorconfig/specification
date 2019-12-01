@@ -59,7 +59,7 @@ following:
      ``[`` and ``]`` and even spaces and tabs are allowed).
    - Forward slashes (``/``) are used as path separators.
    - Backslashes (``\\``) are not allowed as path separators (even on Windows).
-- Pair: a key-value pair, separated by an `=`.
+- Key-Value Pair (or Pair): contains a key and a value, separated by an `=`.
    - Key: the part before the first `=` (trimmed of whitespace).
    - Value: The part after the first `=` (trimmed of whitespace).
 
