@@ -50,16 +50,16 @@ following:
 - Comment: starts with a ``;`` or a ``#``.
    - Inserting a ``#`` or ``;`` after non-whitespace characters in a line
      (i.e., inline) shall neither be parsed as a comment nor as part of the
-     section name, key or value in which it was inserted. This may change in
-     the future; thus, it is not recommended.
+     section name, pair (defined below) key or value in which it was inserted. This may change
+     in the future; thus, is not recommended.
 - Section Header: starts with a ``[`` and ends with a ``]``.
    - May not use any non-whitespace characters outside of the surrounding
      brackets.
    - May contain any characters between the square brackets (e.g.,
-     ``[`` and ``]`` are allowed).
+     ``[`` and ``]`` and even spaces and tabs are allowed).
    - Forward slashes (``/``) are used as path separators.
    - Backslashes (``\\``) are not allowed as path separators (even on Windows).
-- Declaration: contains a key-value pair, separated by an `=`.
+- Key-Value Pair (or Pair): contains a key and a value, separated by an `=`.
    - Key: the part before the first `=` (trimmed of whitespace).
    - Value: The part after the first `=` (trimmed of whitespace).
 
@@ -70,7 +70,7 @@ EditorConfig files should be UTF-8 encoded, with LF or CRLF line separators.
 Additionaly, EditorConfig defines the following terms:
 
 - Preamble: the lines that precedes the first section. The preamble is optional
-  and may contain declarations, comments and blank lines.
+  and may contain key-value pairs, comments and blank lines.
 - Section Name: the string between the beginning ``[`` and the ending ``]``.
 - Section: the lines starting from a Section Header until the beginning of
   the next Section Header or the end of the file.
@@ -119,24 +119,24 @@ file (named ".editorconfig" by default). Non-existing directories are treated
 as if they exist and are empty. All found EditorConfig files are
 searched for sections with section names matching the given filename. The
 search shall stop if an EditorConfig file is found with the ``root``
-declaration set to ``true`` in the preamble or when reaching the root
+key set to ``true`` in the preamble or when reaching the root
 filesystem directory.
 
 Files are read top to bottom and the most recent rules found take
 precedence. If multiple EditorConfig files have matching sections, the rules
-from the closer EditorConfig file are read last, so declarations in closer
+from the closer EditorConfig file are read last, so pairs in closer
 files take precedence.
 
-Supported Declarations
-======================
+Supported Pairs
+===============
 
-EditorConfig file sections contain declarations (i.e., key-value pairs)
-separated by an equal sign (``=``). Any declaration other than ``root`` MUST be
+EditorConfig file sections contain key-value pairs separated by an
+equal sign (``=``). With the exception of the ``root`` key, all pairs MUST be
 located under a section to take effect. EditorConfig plugins shall ignore
-unrecognized declaration keys and declarations with invalid values.
+unrecognized keys and invalid/unsupported values for those keys.
 
-Here is the list of all declaration keys understood by EditorConfig and all
-valid values for these keys:
+Here is the list of all keys understood by EditorConfig and the
+supported values associated with them:
 
 .. list-table::
    :header-rows: 0
@@ -171,13 +171,13 @@ valid values for these keys:
        ``.editorconfig`` file search on the current file. The value is case
        insensitive.
 
-For any declaration, a value of ``unset`` removes the effect of that
-declaration, even if it has been set before. For example, add ``indent_size =
-unset`` to undefine the ``indent_size`` declaration (and use editor defaults).
+For any pair, a value of ``unset`` removes the effect of that
+pair, even if it has been set before. For example, add ``indent_size =
+unset`` to undefine the ``indent_size`` pair (and use editor defaults).
 
-Declaration keys are case insensitive. All keys are lowercased after parsing.
-The maximum length of a declaration key is 50 characters and the maximum length
-of a declaration value is 255 characters. Any key or value beyond these limits
+Pair keys are case insensitive. All keys are lowercased after parsing.
+The maximum length of a pair key is 50 characters and the maximum length
+of a pair value is 255 characters. Any key or value beyond these limits
 shall be ignored.
 
 Suggestions for Plugin Developers
