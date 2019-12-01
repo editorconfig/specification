@@ -56,7 +56,7 @@ following:
    - May not use any non-whitespace characters outside of the surrounding
      brackets.
    - May contain any characters between the square brackets (e.g.,
-     ``[`` and ``]`` and even spaces are allowed).
+     ``[`` and ``]`` and even spaces and tabs are allowed).
    - Forward slashes (``/``) are used as path separators.
    - Backslashes (``\\``) are not allowed as path separators (even on Windows).
 - Pair: a key-value pair, separated by an `=`.
