@@ -28,8 +28,10 @@ EditorConfig Specification
 
 .. contents:: Table of Contents
 
-Introduction
-============
+Introduction (informative)
+==========================
+
+*All content in this document is normative unless marked "(informative)".*
 
 EditorConfig helps maintain consistent coding styles for multiple developers
 working on the same project across various editors and IDEs. The EditorConfig
@@ -38,11 +40,33 @@ of text editor plugins that enable editors to read the file format and adhere
 to defined styles. EditorConfig files are easily readable and they work nicely
 with version control systems.
 
+
+Terminology
+===========
+
+In EditorConfig:
+
+- "EditorConfig files" (usually named ``.editorconfig``) store settings,
+  and must conform to this specification.
+- "Cores" parse files conforming to this specification.
+- "Plugins" apply settings to files being edited, and use cores to
+  determine the settings.
+- "Editors" permit editing files, and use plugins to apply settings.
+
+A conforming core or plugin must pass the tests in the
+`core-tests repository`_ or `plugin-tests repository`_, respectively.
+
+*(informative)* Some plugins include or bundle their own cores, and some rely
+on external cores.  Some editors include or bundle plugin or core
+functionality.  Editors, plugins, and cores may all come from different
+people.  Those people may or may not have any direct interaction with the
+EditorConfig organization.
+
 File Format
 ===========
 
-EditorConfig uses an INI file format.
-In an EditorConfig file (usually named ``.editorconfig``), all beginning
+EditorConfig files are in an INI-like file format.
+In an EditorConfig file, all beginning
 whitespace on each line is considered irrelevant. Each line must be one of the
 following:
 
@@ -67,7 +91,7 @@ Any line that is not one of the above is invalid.
 
 EditorConfig files should be UTF-8 encoded, with LF or CRLF line separators.
 
-Additionaly, EditorConfig defines the following terms:
+Additionally, EditorConfig defines the following terms:
 
 - Preamble: the lines that precedes the first section. The preamble is optional
   and may contain key-value pairs, comments and blank lines.
@@ -135,12 +159,14 @@ equal sign (``=``). With the exception of the ``root`` key, all pairs MUST be
 located under a section to take effect. EditorConfig plugins shall ignore
 unrecognized keys and invalid/unsupported values for those keys.
 
-Here is the list of all keys understood by EditorConfig and the
-supported values associated with them:
+Here is the list of all keys defined by this version of this specification,
+and the supported values associated with them:
 
 .. list-table::
-   :header-rows: 0
+   :header-rows: 1
 
+   * - Key
+     - Supported values
    * - ``indent_style``
      - Set to ``tab`` or ``space`` to use hard tabs or soft tabs respectively. The
        values are case insensitive.
@@ -161,7 +187,7 @@ supported values associated with them:
      - Set to ``latin1``, ``utf-8``, ``utf-8-bom``, ``utf-16be`` or ``utf-16le`` to
        control the character set. Use of ``utf-8-bom`` is discouraged.
    * - ``trim_trailing_whitespace``
-     - Set to ``true`` to remove all whitespace characters preceeding newline
+     - Set to ``true`` to remove all whitespace characters preceding newline
        characters in the file and ``false`` to ensure it doesn't.
    * - ``insert_final_newline``
      - Set to ``true`` ensure file ends with a newline when saving and ``false``
@@ -183,8 +209,33 @@ shall be ignored.
 Suggestions for Plugin Developers
 =================================
 
-TODO. For now please read the `Plugin Guidelines`_ on GitHub wiki. 
+TODO. For now please read the `Plugin Guidelines`_ on GitHub wiki.
 
+Versioning
+==========
 
+*This section applies beginning with v0.13 of this specification.*
+
+This specification has a version, tagged in the `specification repository`_.
+Each specification version corresponds to the same version in the
+`core-tests repository`_.
+
+Each EditorConfig core, to pass the core tests, must process version
+numbers given with the ``-b`` switch, and must report version numbers when
+given ``-v`` or ``--version``.  The version numbers used for ``-b``, ``-v``,
+and ``--version`` are versions of this specification.  For example, the
+Vimscript core might respond to ``-v`` with:
+
+::
+
+  EditorConfig Vimscript core v1.0.0 - Specification Version 0.13
+
+Cores, plugins, or editors supporting EditorConfig have their own version
+numbers.  Those version numbers are independent of the version number of
+this specification.
+
+.. _core-tests repository: https://github.com/editorconfig/editorconfig-core-test
 .. _Python configparser Library: https://docs.python.org/3/library/configparser.html
 .. _Plugin Guidelines: https://github.com/editorconfig/editorconfig/wiki/Plugin-Guidelines
+.. _plugin-tests repository: https://github.com/editorconfig/editorconfig-plugin-tests
+.. _specification repository: https://github.com/editorconfig/specification
