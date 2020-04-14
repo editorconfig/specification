@@ -93,7 +93,7 @@ special characters for wildcard matching:
    * - ``**``
      - any string of characters
    * - ``?``
-     - any single character
+     - any single character, except path separators (``/``)
    * - ``[seq]``
      - any single character in seq
    * - ``[!seq]``
