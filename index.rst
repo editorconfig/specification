@@ -1,4 +1,4 @@
-..  Copyright (c) 2019 EditorConfig Team
+..  Copyright (c) 2019--2020 EditorConfig Team
     All rights reserved.
 
     Redistribution and use in source and binary forms, with or without
@@ -25,6 +25,8 @@
 
 EditorConfig Specification
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+This is version |version| of this specification.
 
 .. contents:: Table of Contents
 
