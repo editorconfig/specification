@@ -1,4 +1,4 @@
-..  Copyright (c) 2019 EditorConfig Team
+..  Copyright (c) 2019--2020 EditorConfig Team
     All rights reserved.
 
     Redistribution and use in source and binary forms, with or without
@@ -25,6 +25,8 @@
 
 EditorConfig Specification
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+This is version |version| of this specification.
 
 .. contents:: Table of Contents
 
@@ -214,11 +216,15 @@ TODO. For now please read the `Plugin Guidelines`_ on GitHub wiki.
 Versioning
 ==========
 
-*This section applies beginning with v0.13 of this specification.*
+*This section applies beginning with version 0.14.0 of this specification.*
 
 This specification has a version, tagged in the `specification repository`_.
 Each specification version corresponds to the same version in the
 `core-tests repository`_.
+
+The version numbering of the specification follows
+`Semantic Versioning 2.0.0`_ ("SemVer").  The version numbering of
+the `core-tests repository`_ also follows SemVer.
 
 Each EditorConfig core, to pass the core tests, must process version
 numbers given with the ``-b`` switch, and must report version numbers when
@@ -228,7 +234,7 @@ Vimscript core might respond to ``-v`` with:
 
 ::
 
-  EditorConfig Vimscript core v1.0.0 - Specification Version 0.13
+  EditorConfig Vimscript core v1.0.0 - Specification Version 0.14.0
 
 Cores, plugins, or editors supporting EditorConfig have their own version
 numbers.  Those version numbers are independent of the version number of
@@ -238,4 +244,5 @@ this specification.
 .. _Python configparser Library: https://docs.python.org/3/library/configparser.html
 .. _Plugin Guidelines: https://github.com/editorconfig/editorconfig/wiki/Plugin-Guidelines
 .. _plugin-tests repository: https://github.com/editorconfig/editorconfig-plugin-tests
+.. _Semantic Versioning 2.0.0: https://semver.org/spec/v2.0.0.html
 .. _specification repository: https://github.com/editorconfig/specification
