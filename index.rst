@@ -133,8 +133,8 @@ special characters for wildcard matching:
 The backslash character (``\\``) can be used to escape a character so it is
 not interpreted as a special character.
 
-The maximum length of a section name is 4096 characters. All sections
-exceeding this limit are ignored.
+Cores must accept section names with length up to and including 1024 characters.
+Beyond that, each implementation may choose to define its own upper limit or no explicit upper limit at all.
 
 File Processing
 ===============
@@ -204,9 +204,9 @@ pair, even if it has been set before. For example, add ``indent_size =
 unset`` to undefine the ``indent_size`` pair (and use editor defaults).
 
 Pair keys are case insensitive. All keys are lowercased after parsing.
-The maximum length of a pair key is 50 characters and the maximum length
-of a pair value is 255 characters. Any key or value beyond these limits
-shall be ignored.
+
+Cores must accept keys and values with lengths up to and including 1024 and 4096 characters respectively.
+Beyond that, each implementation may choose to define its own upper limits or no explicit upper limits at all.
 
 Suggestions for Plugin Developers
 =================================
