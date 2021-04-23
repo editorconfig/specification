@@ -18,7 +18,7 @@
 # -- Project information -----------------------------------------------------
 
 project = 'EditorConfig Specification'
-copyright = '2019--2020, EditorConfig Team'
+copyright = '2019-2020, EditorConfig Team'
 author = 'EditorConfig Team'
 
 version = '0.14.0'
