@@ -1,7 +1,7 @@
 # EditorConfig Specification
 
 This repository hosts the specification of EditorConfig. A built version is
-available at https://editorconfig-specification.readthedocs.io/en/latest/ .
+available at https://editorconfig-specification.readthedocs.io/ .
 
 ## Build
 
