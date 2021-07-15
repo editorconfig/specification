@@ -74,10 +74,11 @@ following:
 
 - Blank: contains only whitespace characters.
 - Comment: starts with a ``;`` or a ``#``.
-   - Inserting a ``#`` or ``;`` after non-whitespace characters in a line
-     (i.e., inline) shall neither be parsed as a comment nor as part of the
-     section name, pair (defined below) key or value in which it was inserted. This may change
-     in the future; thus, is not recommended.
+   - Inserting an unescaped ``#`` or ``;`` after non-whitespace characters in
+     a line (i.e., inline) shall neither be parsed as a comment nor as part of
+     the section name, pair (defined below) key or value in which it was
+     inserted. This behavior may change in the future; thus, such kind of
+     insertion is not recommended.
 - Section Header: starts with a ``[`` and ends with a ``]``.
    - May not use any non-whitespace characters outside of the surrounding
      brackets.
