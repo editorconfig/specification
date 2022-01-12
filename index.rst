@@ -68,16 +68,15 @@ File Format
 ===========
 
 EditorConfig files are in an INI-like file format.
-In an EditorConfig file, all beginning
-whitespace on each line is considered irrelevant. Each line must be one of the
-following:
+In an EditorConfig file, all beginning whitespace on each line is considered
+irrelevant. Each line must be one of the following:
 
 - Blank: contains only whitespace characters.
 - Comment: starts with a ``;`` or a ``#``.
    - Inserting an unescaped ``#`` or ``;`` after non-whitespace characters in
-     a line (i.e., inline) shall neither be parsed as a comment nor as part of
-     the section name, pair (defined below) key or value in which it was
-     inserted. This behavior may change in the future; thus, such kind of
+     a line (i.e. inline) is not parsed as a comment, nor as part of
+     the section name, the key pair (see below), or the value it was inserted
+     into. This behavior may change in the future; therefore this kind of
      insertion is not recommended.
 - Section Header: starts with a ``[`` and ends with a ``]``.
    - May not use any non-whitespace characters outside of the surrounding
