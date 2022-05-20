@@ -73,11 +73,6 @@ irrelevant. Each line must be one of the following:
 
 - Blank: contains only whitespace characters.
 - Comment: starts with a ``;`` or a ``#``.
-   - Inserting an unescaped ``#`` or ``;`` after non-whitespace characters in
-     a line (i.e. inline) is not parsed as a comment, nor as part of
-     the section name, the key pair (see below), or the value it was inserted
-     into. This behavior may change in the future; therefore this kind of
-     insertion is not recommended.
 - Section Header: starts with a ``[`` and ends with a ``]``.
    - May not use any non-whitespace characters outside of the surrounding
      brackets.
@@ -100,6 +95,8 @@ Additionally, EditorConfig defines the following terms:
 - Section Name: the string between the beginning ``[`` and the ending ``]``.
 - Section: the lines starting from a Section Header until the beginning of
   the next Section Header or the end of the file.
+ 
+> The EditorConfig fileformat formerly allowed the use of `;` and `#` to parse the rest of a line as comment. This led to confusion how to handle values containing those characters when implementing a parser. We removed the support of inline comments entirely to make the standard easy to implement and understand. Older EditorConfig parsers may still allow inline comments.
 
 Glob Expressions
 ================
