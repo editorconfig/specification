@@ -96,7 +96,11 @@ Additionally, EditorConfig defines the following terms:
 - Section: the lines starting from a Section Header until the beginning of
   the next Section Header or the end of the file.
  
-> The EditorConfig fileformat formerly allowed the use of `;` and `#` to parse the rest of a line as comment. This led to confusion how to handle values containing those characters when implementing a parser. We removed the support of inline comments entirely to make the standard easy to implement and understand. Older EditorConfig parsers may still allow inline comments.
+ 
+   The EditorConfig file format formerly allowed the use of `;` and `#` after the
+   beginning of the line to mark the rest of a line as comment. This led to
+   confusion how to parse values containing those characters. Old EditorConfig
+   parsers may still allow inline comments.
 
 Glob Expressions
 ================
