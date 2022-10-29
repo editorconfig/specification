@@ -88,6 +88,30 @@ Any line that is not one of the above is invalid.
 
 EditorConfig files should be UTF-8 encoded, with LF or CRLF line separators.
 
+No inline comments
+------------------
+
+.. versionchanged:: 0.15.0
+
+A ``;`` or ``#`` anywhere other than at the beginning of a line does *not*
+start a comment, but is part of the text of that line.  For example::
+
+  [*.txt]
+  foo = editorconfig ;)
+
+gives variable ``foo`` the value ``editorconfig ;)`` in ``*.txt`` files,
+*not* the value ``editorconfig``.
+
+This specification does not define any "escaping" mechanism for
+``;`` or ``#`` characters.
+
+.. admonition :: Compatibility
+
+  The EditorConfig file format formerly allowed the use of `;` and `#` after the
+  beginning of the line to mark the rest of a line as comment. This led to
+  confusion how to parse values containing those characters. Old EditorConfig
+  parsers may still allow inline comments.
+
 Terms
 -----
 
@@ -98,12 +122,6 @@ EditorConfig defines the following terms for parts of an EditorConfig file:
 - Section Name: the string between the beginning ``[`` and the ending ``]``.
 - Section: the lines starting from a Section Header until the beginning of
   the next Section Header or the end of the file.
-
-
-   The EditorConfig file format formerly allowed the use of `;` and `#` after the
-   beginning of the line to mark the rest of a line as comment. This led to
-   confusion how to parse values containing those characters. Old EditorConfig
-   parsers may still allow inline comments.
 
 Glob Expressions
 ================
