@@ -88,15 +88,18 @@ Any line that is not one of the above is invalid.
 
 EditorConfig files should be UTF-8 encoded, with LF or CRLF line separators.
 
-Additionally, EditorConfig defines the following terms:
+Terms
+-----
+
+EditorConfig defines the following terms for parts of an EditorConfig file:
 
 - Preamble: the lines that precedes the first section. The preamble is optional
   and may contain key-value pairs, comments and blank lines.
 - Section Name: the string between the beginning ``[`` and the ending ``]``.
 - Section: the lines starting from a Section Header until the beginning of
   the next Section Header or the end of the file.
- 
- 
+
+
    The EditorConfig file format formerly allowed the use of `;` and `#` after the
    beginning of the line to mark the rest of a line as comment. This led to
    confusion how to parse values containing those characters. Old EditorConfig
