@@ -74,11 +74,6 @@ irrelevant. Each line must be one of the following:
 
 - Blank: contains only whitespace characters.
 - Comment: starts with a ``;`` or a ``#``.
-   - Inserting an unescaped ``#`` or ``;`` after non-whitespace characters in
-     a line (i.e. inline) is not parsed as a comment, nor as part of
-     the section name, the key pair (see below), or the value it was inserted
-     into. This behavior may change in the future; therefore this kind of
-     insertion is not recommended.
 - Section Header: starts with a ``[`` and ends with a ``]``.
    - May not use any non-whitespace characters outside of the surrounding
      brackets.
@@ -94,7 +89,34 @@ Any line that is not one of the above is invalid.
 
 EditorConfig files should be UTF-8 encoded, with LF or CRLF line separators.
 
-Additionally, EditorConfig defines the following terms:
+No inline comments
+------------------
+
+.. versionchanged:: 0.15.0
+
+A ``;`` or ``#`` anywhere other than at the beginning of a line does *not*
+start a comment, but is part of the text of that line.  For example::
+
+  [*.txt]
+  foo = editorconfig ;)
+
+gives variable ``foo`` the value ``editorconfig ;)`` in ``*.txt`` files,
+*not* the value ``editorconfig``.
+
+This specification does not define any "escaping" mechanism for
+``;`` or ``#`` characters.
+
+.. admonition :: Compatibility
+
+  The EditorConfig file format formerly allowed the use of `;` and `#` after the
+  beginning of the line to mark the rest of a line as comment. This led to
+  confusion how to parse values containing those characters. Old EditorConfig
+  parsers may still allow inline comments.
+
+Terms
+-----
+
+EditorConfig defines the following terms for parts of an EditorConfig file:
 
 - Preamble: the lines that precedes the first section. The preamble is optional
   and may contain key-value pairs, comments and blank lines.
