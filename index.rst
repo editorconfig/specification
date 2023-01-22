@@ -188,8 +188,12 @@ Supported Pairs
 
 EditorConfig file sections contain key-value pairs separated by an
 equal sign (``=``). With the exception of the ``root`` key, all pairs MUST be
-located under a section to take effect. EditorConfig plugins shall ignore
-unrecognized keys and invalid/unsupported values.
+located under a section to take effect.
+
+- EditorConfig cores shall accept and report all syntactically valid
+  key-value pairs, even if the key is not defined in this specification.
+- EditorConfig plugins shall ignore unrecognized keys and invalid/unsupported
+  values.
 
 Here is the list of all keys defined by this version of this specification,
 and the supported values associated with them:
