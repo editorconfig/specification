@@ -118,10 +118,10 @@ This specification does not define any "escaping" mechanism for
   confusion how to parse values containing those characters. Old EditorConfig
   parsers may still allow inline comments.
 
-Terms
------
+Parts of an EditorConfig file
+-----------------------------
 
-EditorConfig defines the following terms for parts of an EditorConfig file:
+The parts of an EditorConfig file are:
 
 - Preamble: the lines that precedes the first section. The preamble is optional
   and may contain key-value pairs, comments and blank lines.
