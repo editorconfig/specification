@@ -47,14 +47,19 @@ with version control systems.
 Terminology
 ===========
 
+.. versionchanged:: 0.15.1
+
 In EditorConfig:
 
-- "EditorConfig files" (usually named ``.editorconfig``) store settings,
-  and must conform to this specification.
-- "Cores" parse files conforming to this specification.
-- "Plugins" apply settings to files being edited, and use cores to
-  determine the settings.
-- "Editors" permit editing files, and use plugins to apply settings.
+- "EditorConfig files" (usually named ``.editorconfig``) include section(s)
+  storing key-value pairs.  EditorConfig files must conform to
+  this specification.
+- "Cores" parse files conforming to this specification, and provide
+  key-value pairs to plugins.
+- "Plugins" receive key-value pairs from cores and update an editor's
+  settings based on the key-value pairs.
+- "Editors" permit editing files, and use plugins to update settings for
+  files being edited.
 
 A conforming core or plugin must pass the tests in the
 `core-tests repository`_ or `plugin-tests repository`_, respectively.
@@ -113,10 +118,10 @@ This specification does not define any "escaping" mechanism for
   confusion how to parse values containing those characters. Old EditorConfig
   parsers may still allow inline comments.
 
-Terms
------
+Parts of an EditorConfig file
+-----------------------------
 
-EditorConfig defines the following terms for parts of an EditorConfig file:
+The parts of an EditorConfig file are:
 
 - Preamble: the lines that precedes the first section. The preamble is optional
   and may contain key-value pairs, comments and blank lines.
@@ -179,10 +184,16 @@ files take precedence.
 Supported Pairs
 ===============
 
+.. versionchanged:: 0.15.1
+
 EditorConfig file sections contain key-value pairs separated by an
 equal sign (``=``). With the exception of the ``root`` key, all pairs MUST be
-located under a section to take effect. EditorConfig plugins shall ignore
-unrecognized keys and invalid/unsupported values for those keys.
+located under a section to take effect.
+
+- EditorConfig cores shall accept and report all syntactically valid
+  key-value pairs, even if the key is not defined in this specification.
+- EditorConfig plugins shall ignore unrecognized keys and invalid/unsupported
+  values.
 
 Here is the list of all keys defined by this version of this specification,
 and the supported values associated with them:
