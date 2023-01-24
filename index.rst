@@ -214,6 +214,10 @@ and the supported values associated with them:
        equals ``tab``, the ``indent_size`` shall be set to the tab size, which
        should be ``tab_width`` (if specified); else, the tab size set by the
        editor. The values are case insensitive.
+   * - ``indent_method``
+     - Set to ``smart_tabs`` or ``elastic_tabs`` to use a smart tabs respectively elastic
+       tabstops (when supported). The given tabstop method may override the ``indent_style``
+       or ``indent_size`` settings as required. 
    * - ``tab_width``
      - Set to a whole number defining the number of columns used to represent
        a tab character. This defaults to the value of ``indent_size`` and should
