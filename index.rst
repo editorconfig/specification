@@ -87,8 +87,10 @@ irrelevant. Each line must be one of the following:
    - Forward slashes (``/``) are used as path separators.
    - Backslashes (``\\``) are not allowed as path separators (even on Windows).
 - Key-Value Pair (or Pair): contains a key and a value, separated by an `=`.
-   - Key: the part before the first `=` (trimmed of whitespace).
-   - Value: The part after the first `=` (trimmed of whitespace).
+   - Key: The part before the first `=` (trimmed of whitespace, but including
+     any whitespace in the middle).
+   - Value: The part after the first `=` (trimmed of whitespace, but including
+     any whitespace in the middle).
 
 Any line that is not one of the above is invalid.
 
