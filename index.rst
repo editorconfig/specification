@@ -155,7 +155,7 @@ special characters for wildcard matching:
    * - ``[!seq]``
      - any single character not in seq
    * - ``{s1,s2,s3}``
-     - any of the strings given (separated by commas, can be nested)
+     - any of the strings given (separated by commas, can be nested) (But ``{s1}`` only matches ``{s1}`` literally.)
    * - ``{num1..num2}``
      - any integer numbers between ``num1`` and ``num2``, where ``num1`` and ``num2``
        can be either positive or negative
