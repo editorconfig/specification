@@ -186,7 +186,7 @@ files take precedence.
 Supported Pairs
 ===============
 
-.. versionchanged:: 0.15.1
+.. versionchanged:: 0.16
 
 EditorConfig file sections contain key-value pairs separated by an
 equal sign (``=``). With the exception of the ``root`` key, all pairs MUST be
@@ -224,6 +224,15 @@ and the supported values associated with them:
    * - ``charset``
      - Set to ``latin1``, ``utf-8``, ``utf-8-bom``, ``utf-16be`` or ``utf-16le`` to
        control the character set. Use of ``utf-8-bom`` is discouraged.
+   * - ``spelling_language``
+     - Sets the natural language that should be used for spell checking.
+       Only one language can be specified.  There is no default value.
+
+       The format is ``ss`` or ``ss-TT``, where ``ss`` is an `ISO 639`_
+       language code and ``TT`` is an `ISO 3166`_ territory identifier.
+
+       **Note:** This property does **not** specify the charset to be used.
+       The charset is in separate property ``charset``.
    * - ``trim_trailing_whitespace``
      - Set to ``true`` to remove all whitespace characters preceding newline
        characters in the file and ``false`` to ensure it doesn't.
@@ -277,6 +286,8 @@ numbers.  Those version numbers are independent of the version number of
 this specification.
 
 .. _core-tests repository: https://github.com/editorconfig/editorconfig-core-test
+.. _ISO 639: https://en.wikipedia.org/wiki/ISO_639
+.. _ISO 3166: https://en.wikipedia.org/wiki/ISO_3166
 .. _Python configparser Library: https://docs.python.org/3/library/configparser.html
 .. _Plugin Guidelines: https://github.com/editorconfig/editorconfig/wiki/Plugin-Guidelines
 .. _plugin-tests repository: https://github.com/editorconfig/editorconfig-plugin-tests
