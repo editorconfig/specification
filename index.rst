@@ -73,11 +73,14 @@ EditorConfig organization.
 File Format
 ===========
 
-EditorConfig files are in an INI-like file format.
-In an EditorConfig file, all beginning whitespace on each line is considered
-irrelevant. Each line must be one of the following:
+.. versionchanged:: 0.16.1
 
-- Blank: contains only whitespace characters.
+EditorConfig files are in an INI-like file format.
+In an EditorConfig file, all beginning whitespace on each line is ignored.
+Each line must be one of the following, once leading whitespace is removed
+(and ignoring any trailing line separator):
+
+- Blank: contains nothing.
 - Comment: starts with a ``;`` or a ``#``.
 - Section Header: starts with a ``[`` and ends with a ``]``.
    - May not use any non-whitespace characters outside of the surrounding
