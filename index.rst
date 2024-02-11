@@ -83,8 +83,7 @@ Each line must be one of the following, once leading whitespace is removed
 - Blank: contains nothing.
 - Comment: starts with a ``;`` or a ``#``.
 - Section Header: starts with a ``[`` and ends with a ``]``.
-   - May not use any non-whitespace characters outside of the surrounding
-     brackets.
+   - Trailing whitespace may follow the closing ``]``.
    - May contain any characters between the square brackets (e.g.,
      ``[`` and ``]`` and even spaces and tabs are allowed).
    - Forward slashes (``/``) are used as path separators.
