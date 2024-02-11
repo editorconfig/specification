@@ -73,7 +73,7 @@ EditorConfig organization.
 File Format
 ===========
 
-.. versionchanged:: 0.16.1
+.. versionchanged:: 0.17.0
 
 EditorConfig files are in an INI-like file format.
 In an EditorConfig file, all beginning whitespace on each line is ignored.
@@ -88,11 +88,13 @@ Each line must be one of the following, once leading whitespace is removed
      ``[`` and ``]`` and even spaces and tabs are allowed).
    - Forward slashes (``/``) are used as path separators.
    - Backslashes (``\\``) are not allowed as path separators (even on Windows).
-- Key-Value Pair (or Pair): contains a key and a value, separated by an ``=``.
-   - Key: The part before the first ``=`` (trimmed of whitespace, but including
-     any whitespace in the middle).
-   - Value: The part after the first ``=`` (trimmed of whitespace, but including
-     any whitespace in the middle).
+- Key-Value Pair (or Pair): contains a key, an ``=``, and optionally a value.
+   - Key: The part before the first ``=`` on the line.
+   - Value: The part after the first ``=`` on the line.
+   - Keys and values are trimmed of leading and trailing whitespace, but
+     include any whitespace that is between non-whitespace characters.
+   - If there is nothing, or only whitespace, after the first ``=`` on the line,
+     then the value is an empty string (i.e., ``""`` in C or Python).
 
 Any line that is not one of the above is invalid.
 
