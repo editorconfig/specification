@@ -18,13 +18,18 @@
 # -- Project information -----------------------------------------------------
 
 project = 'EditorConfig Specification'
-copyright = '2019--2020, EditorConfig Team'
+copyright = '2019--2024, EditorConfig Team'
 author = 'EditorConfig Team'
 
 version = '0.16.0'
 release = '0.16.0'
 
 # -- General configuration ---------------------------------------------------
+
+import os
+
+# Set canonical URL from the Read the Docs Domain
+html_baseurl = os.environ.get("READTHEDOCS_CANONICAL_URL", "")
 
 # The master document
 master_doc = 'index'
