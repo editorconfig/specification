@@ -1,0 +1,19 @@
+# Preview the generated doc in pull requests.
+
+name: Preview Generated Docs
+on:
+  pull_request:
+    branches: ["master"]
+
+permissions:
+  pull-requests: write
+
+jobs:
+  documentation-links:
+    name: Preview Docs
+    runs-on: ubuntu-latest
+    steps:
+      - uses: readthedocs/actions/preview@v1
+        with:
+          project-slug: "editorconfig-specification"
+          single-version: true
