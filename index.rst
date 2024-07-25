@@ -73,23 +73,25 @@ EditorConfig organization.
 File Format
 ===========
 
-EditorConfig files are in an INI-like file format.
-In an EditorConfig file, all beginning whitespace on each line is considered
-irrelevant. Each line must be one of the following:
+.. versionchanged:: 0.16.1
 
-- Blank: contains only whitespace characters.
+EditorConfig files are in an INI-like file format.
+In an EditorConfig file, all beginning whitespace on each line is ignored.
+Each line must be one of the following, once leading whitespace is removed
+(and ignoring any trailing line separator):
+
+- Blank: contains nothing.
 - Comment: starts with a ``;`` or a ``#``.
 - Section Header: starts with a ``[`` and ends with a ``]``.
-   - May not use any non-whitespace characters outside of the surrounding
-     brackets.
+   - Trailing whitespace may follow the closing ``]``.
    - May contain any characters between the square brackets (e.g.,
      ``[`` and ``]`` and even spaces and tabs are allowed).
    - Forward slashes (``/``) are used as path separators.
    - Backslashes (``\\``) are not allowed as path separators (even on Windows).
-- Key-Value Pair (or Pair): contains a key and a value, separated by an `=`.
-   - Key: The part before the first `=` (trimmed of whitespace, but including
+- Key-Value Pair (or Pair): contains a key and a value, separated by an ``=``.
+   - Key: The part before the first ``=`` (trimmed of whitespace, but including
      any whitespace in the middle).
-   - Value: The part after the first `=` (trimmed of whitespace, but including
+   - Value: The part after the first ``=`` (trimmed of whitespace, but including
      any whitespace in the middle).
 
 Any line that is not one of the above is invalid.
@@ -115,7 +117,7 @@ This specification does not define any "escaping" mechanism for
 
 .. admonition :: Compatibility
 
-  The EditorConfig file format formerly allowed the use of `;` and `#` after the
+  The EditorConfig file format formerly allowed the use of ``;`` and ``;`` after the
   beginning of the line to mark the rest of a line as comment. This led to
   confusion how to parse values containing those characters. Old EditorConfig
   parsers may still allow inline comments.
