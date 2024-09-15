@@ -229,7 +229,9 @@ and the supported values associated with them:
        Only one language can be specified.  There is no default value.
 
        The format is ``ss`` or ``ss-TT``, where ``ss`` is an `ISO 639`_
-       language code and ``TT`` is an `ISO 3166`_ territory identifier.
+       two-letter language code and ``TT`` is an `ISO 3166`_ two-letter
+       territory identifier.  (Therefore ``spelling_language`` must be
+       either two or five characters long.)
 
        **Note:** This property does **not** specify the charset to be used.
        The charset is in separate property ``charset``.
