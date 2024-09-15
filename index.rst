@@ -73,6 +73,8 @@ EditorConfig organization.
 File Format
 ===========
 
+.. versionchanged:: 0.17.0
+
 EditorConfig files are in an INI-like file format.
 In an EditorConfig file, all beginning whitespace on each line is considered
 irrelevant. Each line must be one of the following:
@@ -94,7 +96,7 @@ irrelevant. Each line must be one of the following:
 
 Any line that is not one of the above is invalid.
 
-EditorConfig files should be UTF-8 encoded, with LF or CRLF line separators.
+EditorConfig files must be UTF-8 encoded, with LF or CRLF line separators.
 
 No inline comments
 ------------------
