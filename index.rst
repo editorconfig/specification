@@ -88,10 +88,10 @@ irrelevant. Each line must be one of the following:
      ``[`` and ``]`` and even spaces and tabs are allowed).
    - Forward slashes (``/``) are used as path separators.
    - Backslashes (``\\``) are not allowed as path separators (even on Windows).
-- Key-Value Pair (or Pair): contains a key and a value, separated by an `=`.
-   - Key: The part before the first `=` (trimmed of whitespace, but including
+- Key-Value Pair (or Pair): contains a key and a value, separated by an ``=``.
+   - Key: The part before the first ``=`` (trimmed of whitespace, but including
      any whitespace in the middle).
-   - Value: The part after the first `=` (trimmed of whitespace, but including
+   - Value: The part after the first ``=`` (trimmed of whitespace, but including
      any whitespace in the middle).
 
 Any line that is not one of the above is invalid.
@@ -117,7 +117,7 @@ This specification does not define any "escaping" mechanism for
 
 .. admonition :: Compatibility
 
-  The EditorConfig file format formerly allowed the use of `;` and `#` after the
+  The EditorConfig file format formerly allowed the use of ``;`` and ``#`` after the
   beginning of the line to mark the rest of a line as comment. This led to
   confusion how to parse values containing those characters. Old EditorConfig
   parsers may still allow inline comments.
