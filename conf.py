@@ -21,8 +21,8 @@ project = 'EditorConfig Specification'
 copyright = '2019--2024, EditorConfig Team'
 author = 'EditorConfig Team'
 
-version = '0.16.1'
-release = '0.16.1'
+version = '0.17.1'
+release = '0.17.1'
 
 # -- General configuration ---------------------------------------------------
 

@@ -73,6 +73,8 @@ EditorConfig organization.
 File Format
 ===========
 
+.. versionchanged:: 0.17.0
+
 EditorConfig files are in an INI-like file format.
 In an EditorConfig file, all beginning whitespace on each line is considered
 irrelevant. Each line must be one of the following:
@@ -94,7 +96,7 @@ irrelevant. Each line must be one of the following:
 
 Any line that is not one of the above is invalid.
 
-EditorConfig files should be UTF-8 encoded, with LF or CRLF line separators.
+EditorConfig files must be UTF-8 encoded, with LF or CRLF line separators.
 
 No inline comments
 ------------------
@@ -159,6 +161,13 @@ special characters for wildcard matching:
    * - ``{num1..num2}``
      - any integer numbers between ``num1`` and ``num2``, where ``num1`` and ``num2``
        can be either positive or negative
+
+If the glob contains a path separator (a ``/`` not inside square brackets), then the glob is relative
+to the directory level of the particular `.editorconfig` file itself.
+Otherwise the pattern may also match at any level below the `.editorconfig`
+level. For example, ``*.c`` matches any file that ends with ``.c`` in the
+directory of ``.editorconfig``, but ``subdir/*.c`` only matches files that end
+with ``.c`` in the ``subdir`` directory in the directory of ``.editorconfig``.
 
 The backslash character (``\\``) can be used to escape a character so it is
 not interpreted as a special character.
