@@ -1,6 +1,6 @@
 # Preview the generated doc in pull requests.
 
-name: Preview Generated Docs
+name: readthedocs/actions
 on:
   pull_request_target:
     types:
