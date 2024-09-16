@@ -160,7 +160,7 @@ special characters for wildcard matching:
      - any integer numbers between ``num1`` and ``num2``, where ``num1`` and ``num2``
        can be either positive or negative
 
-If there is a path separator (``/``) at in the glob, then the glob is relative
+If the glob contains a path separator (a ``/`` not inside square brackets), then the glob is relative
 to the directory level of the particular `.editorconfig` file itself.
 Otherwise the pattern may also match at any level below the `.editorconfig`
 level. For example, ``*.c`` matches any file that ends with ``.c`` in the
