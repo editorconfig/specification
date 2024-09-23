@@ -181,6 +181,8 @@ level. For example, ``*.c`` matches any file that ends with ``.c`` in the
 directory of ``.editorconfig``, but ``subdir/*.c`` only matches files that end
 with ``.c`` in the ``subdir`` directory in the directory of ``.editorconfig``.
 
+As a corollary, a section name ending with ``/`` does not match any file.
+
 The backslash character (``\\``) can be used to escape a character so it is
 not interpreted as a special character.
 
