@@ -197,7 +197,7 @@ files take precedence.
 Supported Pairs
 ===============
 
-.. versionchanged:: 0.16
+.. versionchanged:: 0.17.1
 
 EditorConfig file sections contain key-value pairs separated by an
 equal sign (``=``). With the exception of the ``root`` key, all pairs MUST be
@@ -251,7 +251,9 @@ and the supported values associated with them:
        characters in the file and ``false`` to ensure it doesn't.
    * - ``insert_final_newline``
      - Set to ``true`` ensure file ends with a newline when saving and ``false``
-       to ensure it doesn't.
+       to ensure it doesn't.  Editors must not insert newlines in empty files
+       when saving those files, even if ``insert_final_newline = true``.
+
    * - ``root``
      - Must be specified in the preamble. Set to ``true`` to stop the
        ``.editorconfig`` file search on the current file. The value is case
