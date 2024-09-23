@@ -1,4 +1,4 @@
-..  Copyright (c) 2019--2020 EditorConfig Team
+..  Copyright (c) 2019--2024 EditorConfig Team
     All rights reserved.
 
     Redistribution and use in source and binary forms, with or without
@@ -73,22 +73,32 @@ EditorConfig organization.
 File Format
 ===========
 
-.. versionchanged:: 0.17.0
+.. versionchanged:: 0.17.2
 
 EditorConfig files are in an INI-like file format.
-In an EditorConfig file, all beginning whitespace on each line is considered
-irrelevant. Each line must be one of the following:
+To read an EditorConfig file, take one line at a time, from beginning to end.
+For each line:
 
-- Blank: contains only whitespace characters.
-- Comment: starts with a ``;`` or a ``#``.
+#. Remove all leading and trailing whitespace.
+#. Process the remaining text as specified for its type below.
+
+The types of lines are:
+
+- Blank: Contains nothing.  Blank lines are ignored.
+
+- Comment: starts with a ``;`` or a ``#``.  Comment lines are ignored.
+
 - Section Header: starts with a ``[`` and ends with a ``]``.
-   - May not use any non-whitespace characters outside of the surrounding
-     brackets.
+  These lines define globs; see :ref:`glob-expressions`.
+
    - May contain any characters between the square brackets (e.g.,
      ``[`` and ``]`` and even spaces and tabs are allowed).
    - Forward slashes (``/``) are used as path separators.
    - Backslashes (``\\``) are not allowed as path separators (even on Windows).
+
 - Key-Value Pair (or Pair): contains a key and a value, separated by an ``=``.
+  See :ref:`supported-pairs`.
+
    - Key: The part before the first ``=`` (trimmed of whitespace, but including
      any whitespace in the middle).
    - Value: The part after the first ``=`` (trimmed of whitespace, but including
@@ -132,6 +142,8 @@ The parts of an EditorConfig file are:
 - Section Name: the string between the beginning ``[`` and the ending ``]``.
 - Section: the lines starting from a Section Header until the beginning of
   the next Section Header or the end of the file.
+
+.. _glob-expressions:
 
 Glob Expressions
 ================
@@ -191,6 +203,8 @@ Files are read top to bottom and the most recent rules found take
 precedence. If multiple EditorConfig files have matching sections, the rules
 from the closer EditorConfig file are read last, so pairs in closer
 files take precedence.
+
+.. _supported-pairs:
 
 Supported Pairs
 ===============
