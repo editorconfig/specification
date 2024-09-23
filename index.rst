@@ -197,7 +197,7 @@ files take precedence.
 Supported Pairs
 ===============
 
-.. versionchanged:: 0.16
+.. versionchanged:: 0.17.1
 
 EditorConfig file sections contain key-value pairs separated by an
 equal sign (``=``). With the exception of the ``root`` key, all pairs MUST be
@@ -253,9 +253,9 @@ and the supported values associated with them:
      - Set to ``true`` ensure file ends with a newline when saving and ``false``
        to ensure it doesn't.
    * - ``root``
-     - Must be specified in the preamble. Set to ``true`` to stop the
-       ``.editorconfig`` file search on the current file. The value is case
-       insensitive.
+     - Must be specified in the preamble.  Set to ``true`` to tell the core
+       not to check any higher directory for EditorConfig settings for on the
+       current filename.  The value is case-insensitive.
 
 For any pair, a value of ``unset`` removes the effect of that
 pair, even if it has been set before. For example, add ``indent_size =
