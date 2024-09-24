@@ -265,7 +265,9 @@ and the supported values associated with them:
        characters in the file and ``false`` to ensure it doesn't.
    * - ``insert_final_newline``
      - Set to ``true`` ensure file ends with a newline when saving and ``false``
-       to ensure it doesn't.
+       to ensure it doesn't.  Editors must not insert newlines in empty files
+       when saving those files, even if ``insert_final_newline = true``.
+
    * - ``root``
      - Must be specified in the preamble.  Set to ``true`` to tell the core
        not to check any higher directory for EditorConfig settings for on the
