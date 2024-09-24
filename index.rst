@@ -269,9 +269,9 @@ and the supported values associated with them:
        when saving those files, even if ``insert_final_newline = true``.
 
    * - ``root``
-     - Must be specified in the preamble. Set to ``true`` to stop the
-       ``.editorconfig`` file search on the current file. The value is case
-       insensitive.
+     - Must be specified in the preamble.  Set to ``true`` to tell the core
+       not to check any higher directory for EditorConfig settings for on the
+       current filename.  The value is case-insensitive.
 
 For any pair, a value of ``unset`` removes the effect of that
 pair, even if it has been set before. For example, add ``indent_size =
