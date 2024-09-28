@@ -99,10 +99,12 @@ The types of lines are:
 - Key-Value Pair (or Pair): contains a key and a value, separated by an ``=``.
   See :ref:`supported-pairs`.
 
-   - Key: The part before the first ``=`` (trimmed of whitespace, but including
-     any whitespace in the middle).
-   - Value: The part after the first ``=`` (trimmed of whitespace, but including
-     any whitespace in the middle).
+   - Key: The part before the first ``=`` on the line.
+   - Value: The part, if any, after the first ``=`` on the line.
+   - Keys and values are trimmed of leading and trailing whitespace, but
+     include any whitespace that is between non-whitespace characters.
+   - If a value is not provided, then the value is an empty string
+     (i.e., ``""`` in C or Python).
 
 Any line that is not one of the above is invalid.
 
