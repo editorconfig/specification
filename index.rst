@@ -180,7 +180,8 @@ If the glob contains a path separator (a ``/`` not inside square brackets), then
 to the directory level of the particular `.editorconfig` file itself.
 Otherwise the pattern may also match at any level below the `.editorconfig`
 level. For example, ``*.c`` matches any file that ends with ``.c`` in the
-directory of ``.editorconfig``, but ``subdir/*.c`` only matches files that end
+directory of ``.editorconfig`` or any other directory below one that stores this ``.editorconfig``. 
+However, the glob ``subdir/*.c`` only matches files that end
 with ``.c`` in the ``subdir`` directory in the directory of ``.editorconfig``.
 
 As a corollary, a section name ending with ``/`` does not match any file.
