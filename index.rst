@@ -234,8 +234,10 @@ and the supported values associated with them:
    * - Key
      - Supported values
    * - ``indent_style``
-     - Set to ``tab`` or ``space`` to use hard tabs or soft tabs respectively. The
-       values are case insensitive.
+     - Set to ``tab`` or ``space`` to use tabs or spaces for indentation, respectively. Option ``tab`` 
+       implies that an indentation is to be filled by as many hard tabs as possible, with the rest of the
+       indentation filled by spaces. A non-normative explanation can be found in the indentation_ section. 
+       The values are case insensitive.
    * - ``indent_size``
      - Set to a whole number defining the number of columns used for each
        indentation level and the width of soft tabs (when supported). If this
@@ -284,6 +286,74 @@ Pair keys are case insensitive. All keys are lowercased after parsing.
 
 Cores must accept keys and values with lengths up to and including 1024 and 4096 characters respectively.
 Beyond that, each implementation may choose to define its own upper limits or no explicit upper limits at all.
+
+.. indentation:
+
+Indentation (Non-Normative)
+===========================
+The indentation related options (``indent_style``, ``indent_size`` and ``tab_width``) require a special documentation
+section to specify their behavior. Consider the following code snippet:
+
+.. code-block:: python
+
+    def execute():
+        source = "indentation is important"
+        for i in source.split(" "):
+            print(i)
+
+The ``indent_size`` setting for this code snippet equals 4, because ``indent_size`` means how many columns are required
+to indent the next line in relation to previous (if indentation, of course, is applicable for this line). Then the next question
+is *how* this indentation of 4 columns is achieved. It may be 4 consequent spaces/soft tabs,
+a single tab with width equal to 4, or two tabs with width equal to 2.
+
+This is when ``indent_style`` comes into picture. It specifies what character should be used **whenever possible** in order to
+achieve the indentation size specified in ``indent_size``. To fully understand what "whenever possible" actually means, lets
+assume that the editorconfig rules are specified for the file above:
+
+.. code-block:: ini
+
+    root = true
+    [example_file.py]
+    indent_style = tab
+    indent_size = 4
+    tab_width = 3
+
+The ``indent_size`` of 4 is not achievable by placing 1 or 2 consequent tabs, because ``tab_width = 3``. Therefore,
+in order to comply with this EditorConfig configuration, the new lines (where indentation is applicable) **must be precisely
+indented with one tab, and one space**. That is because by placing one tab we're not achieving the ``indent_size`` required, but by
+placing the 2 consequent tabs we're overreaching. Therefore, although ``indent_style`` is ``tab``, we still have to supplement
+with one space character to fulfill the requirement.
+
+For another example, if we have the following EditorConfig rules defined:
+
+.. code-block:: ini
+
+    root = true
+    [another_file.py]
+    indent_style = tab
+    indent_size = 8
+    tab_width = 4
+
+One **MUST** expect that spaces will not be used at all for indentation, since all the indentation can be achieved via tabs only.
+
+Additionally, it is possible to have ``indent_size`` less then the ``tab_width``.
+
+    [another_file.py]
+    indent_style = tab
+    indent_size = 4
+    tab_width = 8
+
+To understand the way it works, let's look at the following example:
+
+.. code-block:: python
+
+    def func():
+        if True:
+            return True
+
+In this case, the line where the ``if`` statement condition is specified is indented with 4 spaces, because the ``indent_size = 4``
+and the tab cannot fit in. On the other hand, the line with ``return`` statement must be indented with one tab, because the
+indentation level for this line is 8 columns, and a tab can fit in.
 
 Suggestions for Plugin Developers
 =================================
