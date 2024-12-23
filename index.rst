@@ -167,14 +167,19 @@ special characters for wildcard matching:
    * - ``?``
      - any single character, except path separators (``/``)
    * - ``[seq]``
-     - any single character in seq
+     - any single character in seq. Any character inside those brackets is
+       considered literally. It means, that pattern ``[ab*c{1..2}]`` is considered literally:
+       either 'a', or 'b', or '*', or 'c', or '{', or '1', or '.', or '2', or '}'.
    * - ``[!seq]``
-     - any single character not in seq
+     - any single character not in seq. Any character inside those brackets is
+       considered literally as well (see example above).
    * - ``{s1,s2,s3}``
      - any of the strings given (separated by commas, can be nested) (But ``{s1}`` only matches ``{s1}`` literally.)
    * - ``{num1..num2}``
      - any integer numbers between ``num1`` and ``num2``, where ``num1`` and ``num2``
-       can be either positive or negative
+       can be either positive or negative. ``num1`` is required to be
+       less than ``num2``. For instance, ``{1..3}``, ``{-1..4}`` are valid, but ``{-4..-5}``,
+       ``{3..1}`` are not.
 
 If the glob contains a path separator (a ``/`` not inside square brackets), then the glob is relative
 to the directory level of the particular `.editorconfig` file itself.
