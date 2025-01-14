@@ -184,7 +184,12 @@ special characters for wildcard matching:
 If the glob contains a path separator (a ``/`` not inside square brackets), then the glob is relative
 to the directory level of the particular `.editorconfig` file itself.
 Otherwise the pattern may also match at any level below the `.editorconfig`
-level. For example, ``*.c`` matches any file that ends with ``.c`` in the
+level.
+
+Therefore, similar to a `gitignore format`_, a leading slash is not relevant if there is already a slash in the middle of the pattern.
+Thus, the globs `/subdir/*.c` and `subdir/*.c` must yield the same result.
+
+For example, ``*.c`` matches any file that ends with ``.c`` in the
 directory of ``.editorconfig`` or any other directory below one that stores this ``.editorconfig``. 
 However, the glob ``subdir/*.c`` only matches files that end
 with ``.c`` in the ``subdir`` directory in the directory of ``.editorconfig``.
@@ -400,3 +405,4 @@ this specification.
 .. _plugin-tests repository: https://github.com/editorconfig/editorconfig-plugin-tests
 .. _Semantic Versioning 2.0.0: https://semver.org/spec/v2.0.0.html
 .. _specification repository: https://github.com/editorconfig/specification
+.. _gitignore format: https://git-scm.com/docs/gitignore#_pattern_format
