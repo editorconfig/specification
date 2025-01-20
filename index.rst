@@ -51,9 +51,12 @@ Terminology
 
 In EditorConfig:
 
-- "EditorConfig files" (usually named ``.editorconfig``) include section(s)
-  storing key-value pairs.  EditorConfig files must conform to
-  this specification.
+- "EditorConfig files" are files with the name `.editorconfig` that contain key-value pairs. 
+  These files must follow this specification.
+  EditorConfig files may have been created on file systems that do not differentiate between 
+  upper and lowercase letters. Therefore, plugins should recognise filenames that contain any 
+  letter case, such as ".EditorConfig" or ".EDITORCONFIG".
+  It is recommended that the EditorConfig file be created in all lowercase.
 - "Cores" parse files conforming to this specification, and provide
   key-value pairs to plugins.
 - "Plugins" receive key-value pairs from cores and update an editor's
