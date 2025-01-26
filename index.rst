@@ -51,9 +51,9 @@ Terminology
 
 In EditorConfig:
 
-- "EditorConfig files" (usually named ``.editorconfig``) include section(s)
-  storing key-value pairs.  EditorConfig files must conform to
-  this specification.
+- "EditorConfig files" (named ``.editorconfig`` in lowercase) include
+  section(s) storing key-value pairs. EditorConfig files must conform to this
+  specification.
 - "Cores" parse files conforming to this specification, and provide
   key-value pairs to plugins.
 - "Plugins" receive key-value pairs from cores and update an editor's
@@ -185,7 +185,7 @@ If the glob contains a path separator (a ``/`` not inside square brackets), then
 to the directory level of the particular `.editorconfig` file itself.
 Otherwise the pattern may also match at any level below the `.editorconfig`
 level. For example, ``*.c`` matches any file that ends with ``.c`` in the
-directory of ``.editorconfig`` or any other directory below one that stores this ``.editorconfig``. 
+directory of ``.editorconfig`` or any other directory below one that stores this ``.editorconfig``.
 However, the glob ``subdir/*.c`` only matches files that end
 with ``.c`` in the ``subdir`` directory in the directory of ``.editorconfig``.
 
@@ -202,17 +202,34 @@ File Processing
 
 When a filename is given to EditorConfig a search is performed in the
 directory of the given file and all parent directories for an EditorConfig
-file (named ".editorconfig" by default). Non-existing directories are treated
-as if they exist and are empty. All found EditorConfig files are
-searched for sections with section names matching the given filename. The
-search shall stop if an EditorConfig file is found with the ``root``
-key set to ``true`` in the preamble or when reaching the root
+file. An EditorConfig file is named ".editorconfig", all lowercased.
+Non-existing directories are treated as if they exist and are empty. All found
+EditorConfig files are searched for sections with section names matching the
+given filename. The search shall stop if an EditorConfig file is found with
+the ``root`` key set to ``true`` in the preamble or when reaching the root
 filesystem directory.
 
 Files are read top to bottom and the most recent rules found take
 precedence. If multiple EditorConfig files have matching sections, the rules
 from the closer EditorConfig file are read last, so pairs in closer
 files take precedence.
+
+Capitalization of the File Name
+-------------------------------
+
+As noted above, the ``.editorconfig`` filename should be lowercased. On some
+platforms, opening a file with a different capitalization results in opening
+the same file with lowercased file names. On such a platform, in addition to
+the all lowercased ``.editorconfig`` file name, a Core may choose to also
+accept files with a different capitalization as if it were all lowercased.
+
+*(informative)* Such platform is common with a case-insensitive filesystem.
+For example, a file named ``.editorConfig`` exists in the filesystem, but
+opening a file named ``.editorconfig`` via a file-opening API still opens the
+differently capitalized ``.editorConfig`` file. The behavior of the Core as
+described in the previous paragraph is to prevent the need of the additional
+operation of specifically retrieving the filename, which can be relatively
+expensive in the context of EditorConfig.
 
 .. _supported-pairs:
 
