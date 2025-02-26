@@ -19,4 +19,4 @@ The built HTML files should be in `_build`.
 - Submit a GitHub pull request to the [specification repo].
 
 [specification repo]: https://github.com/editorconfig/specification/
-[Sphinx]: https://www.sphinx-doc.org/en/latest/usage/installation.html
+[Sphinx]: https://www.sphinx-doc.org/en/master/usage/installation.html
