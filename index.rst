@@ -30,6 +30,7 @@ EditorConfig Specification
 This is version |version| of this specification.
 
 .. contents:: Table of Contents
+  :backlinks: none
 
 Introduction (informative)
 ==========================
