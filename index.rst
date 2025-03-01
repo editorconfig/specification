@@ -212,7 +212,10 @@ filesystem directory.
 Files are read top to bottom and the most recent rules found take
 precedence. If multiple EditorConfig files have matching sections, the rules
 from the closer EditorConfig file are read last, so pairs in closer
-files take precedence.
+files take precedence. Thus, in case a given file matches multiple sections
+within a single ``.editorconfig`` file, the rules defined in the section that
+comes later in the ``.editorconfig`` file take precedence over rules defined
+in the section that comes earlier in the same ``.editorconfig`` file.
 
 Capitalization of the File Name
 -------------------------------
