@@ -209,8 +209,12 @@ given filename. The search shall stop if an EditorConfig file is found with
 the ``root`` key set to ``true`` in the preamble or when reaching the root
 filesystem directory.
 
-Files are read top to bottom and the most recent rules found take
-precedence. If multiple EditorConfig files have matching sections, the rules
+Files are read top to bottom and the most recent pairs found take
+precedence. Thus, in case a given file matches multiple sections
+within a single ``.editorconfig`` file, the pairs defined in the section that
+comes later in the ``.editorconfig`` file take precedence over pairs defined
+in the section that comes earlier in the same ``.editorconfig`` file. 
+If multiple EditorConfig files have matching sections, the pairs
 from the closer EditorConfig file are read last, so pairs in closer
 files take precedence.
 
