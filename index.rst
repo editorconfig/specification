@@ -362,8 +362,11 @@ For another example, if we have the following EditorConfig rules defined:
 
 One **MUST** expect that spaces will not be used at all for indentation, since all the indentation can be achieved via tabs only.
 
-Additionally, it is possible to have ``indent_size`` less then the ``tab_width``.
+Additionally, it is possible to have ``indent_size`` less than the ``tab_width``.
 
+.. code-block:: ini
+
+    root = true
     [another_file.py]
     indent_style = tab
     indent_size = 4
