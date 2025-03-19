@@ -1,4 +1,4 @@
-..  Copyright (c) 2019--2024 EditorConfig Team
+..  Copyright (c) 2019--2025 EditorConfig Team
     All rights reserved.
 
     Redistribution and use in source and binary forms, with or without
@@ -188,6 +188,9 @@ level. For example, ``*.c`` matches any file that ends with ``.c`` in the
 directory of ``.editorconfig`` or any other directory below one that stores this ``.editorconfig``.
 However, the glob ``subdir/*.c`` only matches files that end
 with ``.c`` in the ``subdir`` directory in the directory of ``.editorconfig``.
+
+Therefore, a leading slash is not relevant if there is already a slash in the middle of the pattern.
+Thus, the globs `/subdir/*.c` and `subdir/*.c` must yield the same result.
 
 As a corollary, a section name ending with ``/`` does not match any file.
 
@@ -424,3 +427,4 @@ this specification.
 .. _plugin-tests repository: https://github.com/editorconfig/editorconfig-plugin-tests
 .. _Semantic Versioning 2.0.0: https://semver.org/spec/v2.0.0.html
 .. _specification repository: https://github.com/editorconfig/specification
+
