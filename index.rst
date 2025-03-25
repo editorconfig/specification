@@ -336,8 +336,8 @@ is *how* this indentation of 4 columns is achieved. It may be 4 consequent space
 a single tab with width equal to 4, or two tabs with width equal to 2.
 
 This is when ``indent_style`` comes into picture. It specifies what character should be used **whenever possible** in order to
-achieve the indentation size specified in ``indent_size``. To fully understand what "whenever possible" actually means, lets
-assume that the editorconfig rules are specified for the file above:
+achieve the indentation size specified in ``indent_size``. To fully understand what "whenever possible" actually means, let's
+consider the following EditorConfig file living in the same directory as the file above:
 
 .. code-block:: ini
 
@@ -353,7 +353,7 @@ indented with one tab, and one space**. That is because by placing one tab we're
 placing the 2 consequent tabs we're overreaching. Therefore, although ``indent_style`` is ``tab``, we still have to supplement
 with one space character to fulfill the requirement.
 
-For another example, if we have the following EditorConfig rules defined:
+For another example, if we have the following EditorConfig file:
 
 .. code-block:: ini
 
