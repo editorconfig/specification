@@ -266,20 +266,20 @@ and the supported values associated with them:
      - Set to ``tab`` or ``space`` to use tabs or spaces for indentation, respectively. Option ``tab`` 
        implies that an indentation is to be filled by as many hard tabs as possible, with the rest of the
        indentation filled by spaces. A non-normative explanation can be found in the indentation_ section. 
-       The values are case insensitive.
+       The values are case-insensitive.
    * - ``indent_size``
      - Set to a whole number defining the number of columns used for each
        indentation level and the width of soft tabs (when supported). If this
        equals ``tab``, the ``indent_size`` shall be set to the tab size, which
        should be ``tab_width`` (if specified); else, the tab size set by the
-       editor. The values are case insensitive.
+       editor. The values are case-insensitive.
    * - ``tab_width``
      - Set to a whole number defining the number of columns used to represent
        a tab character. This defaults to the value of ``indent_size`` and should
        not usually need to be specified.
    * - ``end_of_line``
      - Set to ``lf``, ``cr``, or ``crlf`` to control how line breaks are
-       represented. The values are case insensitive.
+       represented. The values are case-insensitive.
    * - ``charset``
      - Set to ``latin1``, ``utf-8``, ``utf-8-bom``, ``utf-16be`` or ``utf-16le`` to
        control the character set. Use of ``utf-8-bom`` is discouraged.
@@ -311,7 +311,7 @@ For any pair, a value of ``unset`` removes the effect of that
 pair, even if it has been set before. For example, add ``indent_size =
 unset`` to undefine the ``indent_size`` pair (and use editor defaults).
 
-Pair keys are case insensitive. All keys are lowercased after parsing.
+Pair keys are case-insensitive. All keys are lowercased after parsing.
 
 Cores must accept keys and values with lengths up to and including 1024 and 4096 characters respectively.
 Beyond that, each implementation may choose to define its own upper limits or no explicit upper limits at all.
