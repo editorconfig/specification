@@ -60,6 +60,15 @@ In EditorConfig:
   settings based on the key-value pairs.
 - "Editors" permit editing files, and use plugins to update settings for
   files being edited.
+- The words "tab" and "hard tab" are interchangable and represent the 
+  character defined by the Unicode HT/TAB symbol (U+0009). 
+- The word "space" is the Unicode character defined by the Unicode Space/SP symbol (U+0020).
+- "Column" is an abstract atomic unit of indentation. A single space, as defined above, is expected
+  to contribute exactly one column to the indentation of a given line. The amount of columns
+  contributed by the hard tab depends on the configuration pairs defined in the :ref:`supported-pairs` section.
+- The term "soft tab" represents the numerous amount (1..N) of sequential space characters, which,
+  when considered together, form an indentation level that has a length equal to the length of a single 
+  hard tab. The length of both the soft tab and a hard tab is measured in columns.
 
 A conforming core or plugin must pass the tests in the
 `core-tests repository`_ or `plugin-tests repository`_, respectively.
@@ -332,7 +341,7 @@ section to specify their behavior. Consider the following code snippet:
 
 The ``indent_size`` setting for this code snippet equals 4, because ``indent_size`` means how many columns are required
 to indent the next line in relation to previous (if indentation, of course, is applicable for this line). Then the next question
-is *how* this indentation of 4 columns is achieved. It may be 4 consequent spaces/soft tabs,
+is *how* this indentation of 4 columns is achieved. It may be 4 consequent spaces,
 a single tab with width equal to 4, or two tabs with width equal to 2.
 
 This is when ``indent_style`` comes into picture. It specifies what character should be used **whenever possible** in order to
