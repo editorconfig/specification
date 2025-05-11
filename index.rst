@@ -207,8 +207,8 @@ When a filename is given to EditorConfig a search is performed in the
 directory of the given file and all parent directories for an EditorConfig
 file. An EditorConfig file is named ".editorconfig", all lowercased.
 Non-existing directories are treated as if they exist and are empty. All found
-EditorConfig files are searched for sections with section names matching the
-given filename. The search shall stop if an EditorConfig file is found with
+EditorConfig files are searched for sections with section glob expressions matching 
+the given filename. The search shall stop if an EditorConfig file is found with
 the ``root`` key set to ``true`` in the preamble or when reaching the root
 filesystem directory.
 
@@ -237,6 +237,11 @@ differently capitalized ``.editorConfig`` file. The behavior of the Core as
 described in the previous paragraph is to prevent the need of the additional
 operation of specifically retrieving the filename, which can be relatively
 expensive in the context of EditorConfig.
+
+Empty EditorConfig Files
+------------------------
+An empty ``.editorconfig`` file is considered to be a valid ``.editorconfig`` file 
+with no sections and with implicit ``root`` key set to ``false``.
 
 .. _supported-pairs:
 
