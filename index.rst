@@ -110,6 +110,12 @@ Any line that is not one of the above is invalid.
 
 EditorConfig files must be UTF-8 encoded, with LF or CRLF line separators.
 
+Empty EditorConfig Files
+------------------------
+An empty ``.editorconfig`` file contains only Blank and Comment lines, or no 
+lines at all. It is equivalent to an ``.editorconfig`` file that contains only 
+one line, ``root = false``.
+
 No inline comments
 ------------------
 
@@ -237,11 +243,6 @@ differently capitalized ``.editorConfig`` file. The behavior of the Core as
 described in the previous paragraph is to prevent the need of the additional
 operation of specifically retrieving the filename, which can be relatively
 expensive in the context of EditorConfig.
-
-Empty EditorConfig Files
-------------------------
-An empty ``.editorconfig`` file is considered to be a valid ``.editorconfig`` file 
-with no sections and with implicit ``root`` key set to ``false``.
 
 .. _supported-pairs:
 
