@@ -213,8 +213,8 @@ When a filename is given to EditorConfig a search is performed in the
 directory of the given file and all parent directories for an EditorConfig
 file. An EditorConfig file is named ".editorconfig", all lowercased.
 Non-existing directories are treated as if they exist and are empty. All found
-EditorConfig files are searched for sections with section glob expressions matching 
-the given filename. The search shall stop if an EditorConfig file is found with
+EditorConfig files are searched for sections with section names matching the 
+given filename. The search shall stop if an EditorConfig file is found with
 the ``root`` key set to ``true`` in the preamble or when reaching the root
 filesystem directory.
 
