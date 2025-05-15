@@ -110,6 +110,12 @@ Any line that is not one of the above is invalid.
 
 EditorConfig files must be UTF-8 encoded, with LF or CRLF line separators.
 
+Empty EditorConfig Files
+------------------------
+An empty ``.editorconfig`` file contains only Blank and Comment lines, or no 
+lines at all. It is equivalent to an ``.editorconfig`` file that contains only 
+one line, ``root = false``.
+
 No inline comments
 ------------------
 
