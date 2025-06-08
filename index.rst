@@ -289,6 +289,7 @@ and the supported values associated with them:
    * - ``charset``
      - Set to ``latin1``, ``utf-8``, ``utf-8-bom``, ``utf-16be`` or ``utf-16le`` to
        control the character set. Use of ``utf-8-bom`` is discouraged.
+       The values are case-insensitive.
    * - ``spelling_language``
      - Sets the natural language that should be used for spell checking.
        Only one language can be specified.  There is no default value.
