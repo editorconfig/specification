@@ -313,6 +313,16 @@ and the supported values associated with them:
      - Must be specified in the preamble.  Set to ``true`` to tell the core
        not to check any higher directory for EditorConfig settings for on the
        current filename.  The value is case-insensitive.
+   * - ``project_icon.<THEME>``
+     - Specifies the icon of the project to be used in the Editor. Can only be 
+       specified in root EditorConfig files (``root=true``). Optionally, the target 
+       Editor's Theme can be specified in the key after period sign. If the Theme is
+       specified in the pair's key, the Editor shall use the specified icon only when
+       the corresponding Theme is active.
+       
+       The value must be either the absolute or relative path to the icon file. The relative path
+       is assumed to be relative to the directory, that hosts this root EditorConfig file.
+       The image file format and resolution are not specified. 
 
 For any pair, a value of ``unset`` removes the effect of that
 pair, even if it has been set before. For example, add ``indent_size =
